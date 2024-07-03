@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tornado & Hurricane Categories</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .category-container {
+            max-width: 600px;
+            width: 100%;
+        }
+        select, button {
+            padding: 10px;
+            font-size: 1.2em;
+            margin: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        p {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            select, button, p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="category-container">
+        <h1>Tornado & Hurricane Categories</h1>
+        <select id="categorySelect">
+            <optgroup label="Tornadoes">
+                <option value="EF0">EF0 - Gale</option>
+                <option value="EF1">EF1 - Weak</option>
+                <option value="EF2">EF2 - Strong</option>
+                <option value="EF3">EF3 - Severe</option>
+                <option value="EF4">EF4 - Devastating</option>
+                <option value="EF5">EF5 - Incredible</option>
+            </optgroup>
+            <optgroup label="Hurricanes">
+                <option value="Category1">Category 1</option>
+                <option value="Category2">Category 2</option>
+                <option value="Category3">Category 3</option>
+                <option value="Category4">Category 4</option>
+                <option value="Category5">Category 5</option>
+            </optgroup>
+        </select>
+        <button onclick="showDetails()">Show Details</button>
+        <p id="details"></p>
+    </div>
+
+    <script>
+        const details = {
+            EF0: "EF0 Tornado - Gale: 65-85 mph, Minor damage.",
+            EF1: "EF1 Tornado - Weak: 86-110 mph, Moderate damage.",
+            EF2: "EF2 Tornado - Strong: 111-135 mph, Considerable damage.",
+            EF3: "EF3 Tornado - Severe: 136-165 mph, Severe damage.",
+            EF4: "EF4 Tornado - Devastating: 166-200 mph, Devastating damage.",
+            EF5: "EF5 Tornado - Incredible: >200 mph, Incredible damage.",
+            Category1: "Category 1 Hurricane: 74-95 mph, Very dangerous winds will produce some damage.",
+            Category2: "Category 2 Hurricane: 96-110 mph, Extremely dangerous winds will cause extensive damage.",
+            Category3: "Category 3 Hurricane: 111-129 mph, Devastating damage will occur.",
+            Category4: "Category 4 Hurricane: 130-156 mph, Catastrophic damage will occur.",
+            Category5: "Category 5 Hurricane: >157 mph, Catastrophic damage will occur."
+        };
+
+        function showDetails() {
+            const category = document.getElementById('categorySelect').value;
+            document.getElementById('details').innerText = details[category] || "No details available.";
+        }
+    </script>
+</body>
+</html>
