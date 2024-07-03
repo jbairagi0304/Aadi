@@ -31,7 +31,7 @@
         button {
             padding: 10px 20px;
             font-size: 1.2em;
-            margin: 10px;
+            margin: 10px 0;
             cursor: pointer;
             width: 100%;
             box-sizing: border-box;
@@ -75,15 +75,17 @@
 
             if (isNaN(pressure) || isNaN(temperature) || isNaN(windSpeed)) {
                 prediction = "Please enter valid numerical values.";
-            } else if (pressure < 950 && temperature > 26 && windSpeed > 119) {
+            } else if (pressure > 980 && temperature < 26 && windSpeed < 119) {
+                prediction = "Conditions do not indicate a significant cyclone.";
+            } else if (pressure <= 980 && pressure > 965 && temperature >= 26 && temperature < 28 && windSpeed >= 119 && windSpeed <= 153) {
                 prediction = "Category 1 Hurricane: Very dangerous winds will produce some damage.";
-            } else if (pressure < 940 && temperature > 28 && windSpeed > 154) {
+            } else if (pressure <= 965 && pressure > 945 && temperature >= 28 && temperature < 30 && windSpeed >= 154 && windSpeed <= 177) {
                 prediction = "Category 2 Hurricane: Extremely dangerous winds will cause extensive damage.";
-            } else if (pressure < 920 && temperature > 30 && windSpeed > 178) {
+            } else if (pressure <= 945 && pressure > 920 && temperature >= 30 && temperature < 32 && windSpeed >= 178 && windSpeed <= 208) {
                 prediction = "Category 3 Hurricane: Devastating damage will occur.";
-            } else if (pressure < 900 && temperature > 32 && windSpeed > 209) {
+            } else if (pressure <= 920 && pressure > 895 && temperature >= 32 && temperature < 34 && windSpeed >= 209 && windSpeed <= 251) {
                 prediction = "Category 4 Hurricane: Catastrophic damage will occur.";
-            } else if (pressure < 880 && temperature > 34 && windSpeed > 252) {
+            } else if (pressure <= 895 && temperature >= 34 && windSpeed >= 252) {
                 prediction = "Category 5 Hurricane: Catastrophic damage will occur.";
             } else {
                 prediction = "Conditions do not indicate a significant cyclone.";
