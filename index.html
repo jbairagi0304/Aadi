@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aadi's Page</title>
+    <title>Aadi's Pages</title>
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -24,9 +25,27 @@
             0%, 100% { opacity: 0; }
             50% { opacity: 1; }
         }
+        .links {
+            margin-top: 20px;
+        }
+        .link-item {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+        .link-item a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .link-item a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <div class="animated-text">Aadi's Page</div>
+    <div class="animated-text">Aadi's Pages</div>
+    <div class="links">
+        <div class="link-item"><a href="converter.html">Binary/Decimal Converter</a></div>
+        <!-- Add more links to utilities here -->
+    </div>
 </body>
 </html>
