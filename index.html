@@ -14,7 +14,8 @@
             margin: 0;
             background-color: #f0f8ff;
             font-family: Arial, sans-serif;
-            overflow: hidden;
+            text-align: center;
+            padding: 20px;
         }
         .animated-text {
             font-size: 3em;
@@ -27,6 +28,7 @@
         }
         .links {
             margin-top: 20px;
+            width: 100%;
         }
         .link-item {
             margin: 10px 0;
@@ -38,6 +40,14 @@
         }
         .link-item a:hover {
             text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .animated-text {
+                font-size: 2em;
+            }
+            .link-item {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
