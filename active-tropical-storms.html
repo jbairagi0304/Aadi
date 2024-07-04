@@ -25,10 +25,17 @@
 
     <script>
         async function fetchTropicalStorms() {
-            const url = 'https://www.nhc.noaa.gov/CurrentStorms.json';
-            const response = await fetch(url);
-            const data = await response.json();
-            displayStorms(data);
+            const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+            const targetUrl = 'https://www.nhc.noaa.gov/CurrentStorms.json';
+            const url = proxyUrl + targetUrl;
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                displayStorms(data);
+            } catch (error) {
+                console.error('Error fetching tropical storms:', error);
+            }
         }
 
         function displayStorms(data) {
