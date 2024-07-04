@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Tropical Storms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            font-size: 1.5em;
+        }
+        .storm {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Active Tropical Storms</h1>
+    <div id="storm-container"></div>
+
+    <script>
+        async function fetchTropicalStorms() {
+            const url = 'https://www.nhc.noaa.gov/CurrentStorms.json';
+            const response = await fetch(url);
+            const data = await response.json();
+            displayStorms(data);
+        }
+
+        function displayStorms(data) {
+            const container = document.getElementById('storm-container');
+            data.forEach(storm => {
+                const stormDiv = document.createElement('div');
+                stormDiv.className = 'storm';
+                stormDiv.innerHTML = `
+                    <h2>${storm.name}</h2>
+                    <p><strong>Status:</strong> ${storm.status}</p>
+                    <p><strong>Category:</strong> ${storm.category}</p>
+                    <p><strong>Wind Speed:</strong> ${storm.windSpeed} mph</p>
+                    <p><strong>Pressure:</strong> ${storm.pressure} mb</p>
+                    <p><strong>Latitude:</strong> ${storm.latitude}</p>
+                    <p><strong>Longitude:</strong> ${storm.longitude}</p>
+                `;
+                container.appendChild(stormDiv);
+            });
+        }
+
+        fetchTropicalStorms();
+    </script>
+</body>
+</html>
