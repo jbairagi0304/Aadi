@@ -53,12 +53,6 @@
 <body>
     <div class="predictor-container">
         <h1>Cyclone Predictor</h1>
-        <label for="pressure">Pressure (hPa):</label>
-        <input type="text" id="pressure" placeholder="Enter pressure">
-        
-        <label for="temperature">Ocean Temperature (°C):</label>
-        <input type="text" id="temperature" placeholder="Enter ocean temperature">
-        
         <label for="wind-speed">Wind Speed (km/h):</label>
         <input type="text" id="wind-speed" placeholder="Enter wind speed">
         
@@ -68,24 +62,22 @@
 
     <script>
         function predictCyclone() {
-            const pressure = parseFloat(document.getElementById('pressure').value);
-            const temperature = parseFloat(document.getElementById('temperature').value);
             const windSpeed = parseFloat(document.getElementById('wind-speed').value);
             let prediction = "";
 
-            if (isNaN(pressure) || isNaN(temperature) || isNaN(windSpeed)) {
-                prediction = "Please enter valid numerical values.";
-            } else if (pressure > 980 && temperature < 26 && windSpeed < 119) {
+            if (isNaN(windSpeed)) {
+                prediction = "Please enter a valid numerical value for wind speed.";
+            } else if (windSpeed < 119) {
                 prediction = "Conditions do not indicate a significant cyclone.";
-            } else if (pressure <= 980 && pressure > 965 && temperature >= 26 && temperature < 28 && windSpeed >= 119 && windSpeed <= 153) {
+            } else if (windSpeed >= 119 && windSpeed <= 153) {
                 prediction = "Category 1 Hurricane: Very dangerous winds will produce some damage.";
-            } else if (pressure <= 965 && pressure > 945 && temperature >= 28 && temperature < 30 && windSpeed >= 154 && windSpeed <= 177) {
+            } else if (windSpeed >= 154 && windSpeed <= 177) {
                 prediction = "Category 2 Hurricane: Extremely dangerous winds will cause extensive damage.";
-            } else if (pressure <= 945 && pressure > 920 && temperature >= 30 && temperature < 32 && windSpeed >= 178 && windSpeed <= 208) {
+            } else if (windSpeed >= 178 && windSpeed <= 208) {
                 prediction = "Category 3 Hurricane: Devastating damage will occur.";
-            } else if (pressure <= 920 && pressure > 895 && temperature >= 32 && temperature < 34 && windSpeed >= 209 && windSpeed <= 251) {
+            } else if (windSpeed >= 209 && windSpeed <= 251) {
                 prediction = "Category 4 Hurricane: Catastrophic damage will occur.";
-            } else if (pressure <= 895 && temperature >= 34 && windSpeed >= 252) {
+            } else if (windSpeed >= 252) {
                 prediction = "Category 5 Hurricane: Catastrophic damage will occur.";
             } else {
                 prediction = "Conditions do not indicate a significant cyclone.";
